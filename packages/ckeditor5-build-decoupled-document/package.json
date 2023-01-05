@@ -48,14 +48,14 @@
     "@ckeditor/ckeditor5-paragraph": "^35.4.0",
     "@ckeditor/ckeditor5-paste-from-office": "^35.4.0",
     "@ckeditor/ckeditor5-table": "^35.4.0",
-    "@ckeditor/ckeditor5-typing": "^35.4.0"
+    "@ckeditor/ckeditor5-typing": "^35.4.0",
+    "@ckeditor/ckeditor5-html-support": "^35.4.0",
+    "@ckeditor/ckeditor5-remove-format": "^35.4.0"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-core": "^35.4.0",
     "@ckeditor/ckeditor5-dev-translations": "^32.0.0",
     "@ckeditor/ckeditor5-dev-utils": "^32.0.0",
-    "@ckeditor/ckeditor5-html-support": "^34.1.0",
-    "@ckeditor/ckeditor5-remove-format": "^34.1.0",
     "@ckeditor/ckeditor5-theme-lark": "^35.4.0",
     "css-loader": "^5.2.7",
     "postcss-loader": "^4.3.0",
