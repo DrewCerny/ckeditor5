@@ -5,8 +5,7 @@
 
 /* eslint-env node */
 
-const { downloadTranslations } = require( '@ckeditor/ckeditor5-dev-env' );
-const getToken = require( '@ckeditor/ckeditor5-dev-env/lib/translations/gettoken' );
+const { downloadTranslations, getToken } = require( '@ckeditor/ckeditor5-dev-transifex' );
 const { parseArguments, getCKEditor5PackageNames } = require( './utils' );
 
 main().catch( err => {
@@ -23,6 +22,12 @@ main().catch( err => {
 async function main() {
 	const options = parseArguments( process.argv.slice( 2 ) );
 	const packages = getCKEditor5PackageNames( 'download', options );
+
+	if ( packages.length === 0 ) {
+		console.log( 'No package has been found.' );
+
+		return;
+	}
 
 	return downloadTranslations( {
 		// Token used for authentication with the Transifex service.

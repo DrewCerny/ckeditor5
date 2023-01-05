@@ -19,10 +19,23 @@ import { updateViewAttributes } from '../conversionutils.js';
  * @extends module:core/plugin~Plugin
  */
 export default class MediaEmbedElementSupport extends Plugin {
+	/**
+	 * @inheritDoc
+	 */
 	static get requires() {
 		return [ DataFilter ];
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	static get pluginName() {
+		return 'MediaEmbedElementSupport';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	init() {
 		const editor = this.editor;
 
@@ -70,7 +83,7 @@ export default class MediaEmbedElementSupport extends Plugin {
 
 function viewToModelMediaAttributesConverter( dataFilter, mediaElementName ) {
 	return dispatcher => {
-		dispatcher.on( `element:${ mediaElementName }`, upcastMedia );
+		dispatcher.on( `element:${ mediaElementName }`, upcastMedia, { priority: 'low' } );
 	};
 
 	function upcastMedia( evt, data, conversionApi ) {

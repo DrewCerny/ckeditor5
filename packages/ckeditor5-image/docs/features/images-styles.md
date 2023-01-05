@@ -139,7 +139,7 @@ See the result below:
 
 </div>
 
-This set of buttons and styles is available by default in the predefined {@link installation/advanced/predefined-builds#document-editor document editor build} and does not require any additional customization:
+This set of buttons and styles is available by default in the predefined {@link installation/getting-started/predefined-builds#document-editor document editor build} and does not require any additional customization:
 
 ```js
 import DecoupledEditor from '@ckeditor/ckeditor5-editor-decoupled/src/decouplededitor';
@@ -214,6 +214,7 @@ ClassicEditor
 				// Grouping the buttons for the icon-like image styling
 				// into one drop-down.
 				name: 'imageStyle:icons',
+				title: 'Alignment',
 				items: [
 					'imageStyle:margin-left',
 					'imageStyle:margin-right',
@@ -224,6 +225,7 @@ ClassicEditor
 				// Grouping the buttons for the regular
 				// picture-like image styling into one drop-down.
 				name: 'imageStyle:pictures',
+				title: 'Style',
 				items: [ 'imageStyle:block', 'imageStyle:side' ],
 				defaultItem: 'imageStyle:block'
 			}, '|', 'toggleImageCaption', 'linkImage'
@@ -417,7 +419,7 @@ The `ImageStyle` plugin provides a set of default styles depending on the loaded
 
 ## Installation
 
-This feature is available in all {@link installation/advanced/predefined-builds ready-to-use editor builds}. If your integrations uses a custom editor build, check out the {@link features/images-installation image feature installation guide} to learn how to enable this feature.
+This feature is available in all {@link installation/getting-started/predefined-builds ready-to-use editor builds}. If your integrations uses a custom editor build, check out the {@link features/images-installation image feature installation guide} to learn how to enable this feature.
 
 ## Common API
 
@@ -436,4 +438,4 @@ The {@link module:image/imagestyle~ImageStyle} plugin registers:
 
 ## Contribute
 
-The source code of the feature is available on GitHub in https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-image.
+The source code of the feature is available on GitHub in [https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-image](https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-image).

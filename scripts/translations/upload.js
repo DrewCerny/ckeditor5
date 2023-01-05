@@ -6,8 +6,7 @@
 /* eslint-env node */
 
 const fs = require( 'fs' );
-const { uploadPotFiles } = require( '@ckeditor/ckeditor5-dev-env' );
-const getToken = require( '@ckeditor/ckeditor5-dev-env/lib/translations/gettoken' );
+const { uploadPotFiles, getToken } = require( '@ckeditor/ckeditor5-dev-transifex' );
 const { parseArguments, getCKEditor5PackageNames, normalizePath } = require( './utils' );
 
 main().catch( err => {
@@ -28,6 +27,12 @@ async function main() {
 		.filter( ( [ , relativePath ] ) => {
 			return fs.existsSync( normalizePath( options.cwd, relativePath ) );
 		} );
+
+	if ( packages.length === 0 ) {
+		console.log( 'No package has been found.' );
+
+		return;
+	}
 
 	return uploadPotFiles( {
 		// Token used for authentication with the Transifex service.

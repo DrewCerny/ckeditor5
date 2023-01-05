@@ -9,7 +9,7 @@ const path = require( 'path' );
 const mkdirp = require( 'mkdirp' );
 const webpack = require( 'webpack' );
 const { styles } = require( '@ckeditor/ckeditor5-dev-utils' );
-const { getLastFromChangelog } = require( '@ckeditor/ckeditor5-dev-env/lib/release-tools/utils/versions' );
+const { getLastFromChangelog } = require( '@ckeditor/ckeditor5-dev-release-tools' );
 const { writeFile, getCkeditor5Plugins, normalizePath } = require( './utils' );
 const postCssContentStylesPlugin = require( './list-content-styles-plugin' );
 
@@ -172,7 +172,8 @@ function getWebpackConfig() {
 			filename: '[name].js'
 		},
 		resolve: {
-			modules: getModuleResolvePaths()
+			modules: getModuleResolvePaths(),
+			extensions: [ '.ts', '.js', '.json' ]
 		},
 		resolveLoader: {
 			modules: getModuleResolvePaths()
@@ -195,6 +196,10 @@ function getWebpackConfig() {
 							}
 						}
 					]
+				},
+				{
+					test: /\.ts$/,
+					use: [ 'ts-loader' ]
 				}
 			]
 		}

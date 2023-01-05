@@ -7,7 +7,7 @@ modified_at: 2021-10-25
 
 {@snippet features/general-html-support-source}
 
-The General HTML Support ("GHS") feature allows developers to easily enable HTML features that are not explicitly supported by any other dedicated CKEditor 5 plugins. It acts similarly to {@link @ckeditor4 guide/dev/acf/README Advanced Content Filter} (ACF) from CKEditor 4, a feature that filters incoming HTML content by transforming and deleting disallowed elements, attributes, classes and styles. GHS allows for adding this kind of markup to the source and prevents it from being filtered from the editor window and the output.
+The General HTML Support ("GHS") feature allows developers to easily enable HTML features that are not explicitly supported by any other dedicated CKEditor 5 plugins. GHS allows for adding markup like elements, attributes, classes and styles to the source and prevents it from being filtered from the editor window and the output.
 
 Some examples of HTML features that can be easily enabled using General HTML Support include:
 
@@ -20,13 +20,21 @@ Some examples of HTML features that can be easily enabled using General HTML Sup
 
 The enabled HTML features can be loaded (e.g. via `editor.setData()`), pasted, output (e.g. via `editor.getData()`), and are visible in the editing area. Such content can also be edited in the editor, although, to a limited extent. Read more about it in the [Level of support](#level-of-support) section.
 
+<info-box info>
+	The GHS feature is enabled by default in the {@link installation/getting-started/predefined-builds#superbuild superbuild} only. See the [installation](#installation) section to learn how to enable it in your editor.
+</info-box>
+
 ## Demo
 
 Use the {@link features/source-editing source editing feature} toolbar button {@icon @ckeditor/ckeditor5-source-editing/theme/icons/source-editing.svg Source editing} to view and edit the HTML source of the document in the demo below. The configuration of this snippet can be found below the demo editor window.
 
+The General HTML Support feature is configured via the `config.htmlSupport` property. In it, you need to list the HTML features that should be handled by GHS.
+
 {@snippet features/general-html-support}
 
-The General HTML Support feature is configured via the `config.htmlSupport` property. In it, you need to list the HTML features that should be handled by GHS.
+<info-box info>
+	This demo only presents a limited set of features. Visit the {@link examples/builds/full-featured-editor full-featured editor example} to see more in action.
+</info-box>
 
 ## Related features
 
@@ -312,11 +320,15 @@ dataFilter.allowElement( 'object-block' );
 
 It is possible to add support for arbitrary styles, classes and other attributes to existing CKEditor 5 features (such as paragraphs, headings, list items, etc.). Most of the existing CKEditor 5 features can already be extended this way, however, some cannot yet. This includes e.g.: the `<ul>` and `<ol>` elements of the list feature (see: [#9917](https://github.com/ckeditor/ckeditor5/issues/9917)).
 
-We are open for feedback, so if you find any issue, feel free to report it in the [main CKEditor 5 repository](https://github.com/ckeditor/ckeditor5/issues/). You can also track other [GHS-related issues](https://github.com/ckeditor/ckeditor5/issues/9856) on GitHub.
+<info-box info>
+	While the GHS feature is stable, some problems with complex documents may occur if it is used together with {@link features/real-time-collaboration real-time collaboration}.
+</info-box>
+
+We are open for feedback, so if you find any issue, feel free to report it in the [main CKEditor 5 repository](https://github.com/ckeditor/ckeditor5/issues/). You can also track other [GHS-related issues](https://github.com/ckeditor/ckeditor5/issues/9856) on GitHub <!-- To be removed at some point, as the main issue is closed already -->.
 
 ## HTML comments
 
-By default, all HTML comments are filtered out during the editor initialization. The {@link module:html-support/htmlcomment~HtmlComment} feature allows developers to keep them in the document content and retrieve them back, e.g. while {@link installation/advanced/saving-data saving the editor data}. The comments are transparent from the users point of view and they are not displayed in the editable content.
+By default, all HTML comments are filtered out during the editor initialization. The HTML Comments feature allows developers to keep them in the document content and retrieve them back, e.g. while {@link installation/advanced/saving-data saving the editor data}. The comments are transparent from the users point of view and they are not displayed in the editable content.
 
 <info-box>
 	The HTML comment feature is **experimental and not yet production-ready**.
@@ -372,4 +384,4 @@ There are other HTML editing related CKEditor 5 features you may want to check:
 
 ## Contribute
 
-The source code of the feature is available on GitHub in https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-html-support.
+The source code of the feature is available on GitHub in [https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-html-support](https://github.com/ckeditor/ckeditor5/tree/master/packages/ckeditor5-html-support).

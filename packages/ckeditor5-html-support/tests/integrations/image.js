@@ -12,7 +12,6 @@ import ImageBlockEditing from '@ckeditor/ckeditor5-image/src/image/imageblockedi
 import ImageInlineEditing from '@ckeditor/ckeditor5-image/src/image/imageinlineediting';
 import LinkImage from '@ckeditor/ckeditor5-link/src/linkimage';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
-import { priorities } from 'ckeditor5/src/utils';
 
 import { getModelDataWithAttributes } from '../_utils/utils';
 import GeneralHtmlSupport from '../../src/generalhtmlsupport';
@@ -42,6 +41,10 @@ describe( 'ImageElementSupport', () => {
 		editorElement.remove();
 
 		return editor.destroy();
+	} );
+
+	it( 'should be named', () => {
+		expect( editor.plugins.has( 'ImageElementSupport' ) ).to.be.true;
 	} );
 
 	describe( 'BlockImage', () => {
@@ -323,8 +326,7 @@ describe( 'ImageElementSupport', () => {
 			} ] );
 
 			editor.conversion.for( 'upcast' ).dataToMarker( {
-				view: 'commented',
-				converterPriority: priorities.get( 'highest' ) // For marker this priority equals to -999
+				view: 'commented'
 			} );
 
 			editor.setData(
@@ -868,8 +870,7 @@ describe( 'ImageElementSupport', () => {
 			} ] );
 
 			editor.conversion.for( 'upcast' ).dataToMarker( {
-				view: 'commented',
-				converterPriority: priorities.get( 'highest' ) // For marker this priority equals to -999
+				view: 'commented'
 			} );
 
 			editor.setData(
@@ -1403,8 +1404,7 @@ describe( 'ImageElementSupport', () => {
 			} ] );
 
 			editor.conversion.for( 'upcast' ).dataToMarker( {
-				view: 'commented',
-				converterPriority: priorities.get( 'highest' ) // For marker this priority equals to -999
+				view: 'commented'
 			} );
 
 			editor.setData(
@@ -1825,8 +1825,7 @@ describe( 'ImageElementSupport', () => {
 			} ] );
 
 			editor.conversion.for( 'upcast' ).dataToMarker( {
-				view: 'commented',
-				converterPriority: priorities.get( 'highest' ) // For marker this priority equals to -999
+				view: 'commented'
 			} );
 
 			editor.setData(
@@ -2194,8 +2193,7 @@ describe( 'ImageElementSupport', () => {
 			} ] );
 
 			editor.conversion.for( 'upcast' ).dataToMarker( {
-				view: 'commented',
-				converterPriority: priorities.get( 'highest' ) // For marker this priority equals to -999
+				view: 'commented'
 			} );
 
 			editor.setData(
@@ -2397,6 +2395,9 @@ describe( 'ImageElementSupport', () => {
 						name: /^(img)$/
 					} ] );
 
+					// Apply filtering rules added after initial data load.
+					editor.setData( '' );
+
 					expect( schema.getDefinition( 'imageBlock' ).allowAttributes ).to.deep.equal( [
 						'alt',
 						'src',
@@ -2429,6 +2430,9 @@ describe( 'ImageElementSupport', () => {
 						name: /^(img)$/
 					} ] );
 
+					// Apply filtering rules added after initial data load.
+					editor.setData( '' );
+
 					expect( schema.getDefinition( 'imageInline' ).allowAttributes ).to.deep.equal( [
 						'alt',
 						'src',
@@ -2458,6 +2462,9 @@ describe( 'ImageElementSupport', () => {
 					dataFilter.loadAllowedConfig( [ {
 						name: /^(img)$/
 					} ] );
+
+					// Apply filtering rules added after initial data load.
+					editor.setData( '' );
 
 					expect( schema.getDefinition( 'imageBlock' ).allowAttributes ).to.deep.equal( [
 						'htmlAttributes'

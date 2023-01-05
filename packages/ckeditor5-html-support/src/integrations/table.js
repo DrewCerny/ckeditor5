@@ -27,6 +27,13 @@ export default class TableElementSupport extends Plugin {
 	/**
 	 * @inheritDoc
 	 */
+	static get pluginName() {
+		return 'TableElementSupport';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	init() {
 		const editor = this.editor;
 
@@ -94,7 +101,7 @@ function viewToModelTableAttributeConverter( dataFilter ) {
 					conversionApi.writer.setAttribute( attributeName, viewAttributes, data.modelRange );
 				}
 			}
-		} );
+		}, { priority: 'low' } );
 	};
 }
 
